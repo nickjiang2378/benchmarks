@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_72",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "ff4a325cb1a1d4e00584366d086c652463c1ea35",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Allow partial needs `'trailing-strings'` mode, same as `pydantic_core.from_json`\n\nI think I was safe to skip `'trailing-strings'` mode when introducing allow partial #10748.\n\nI was wrong, there are definitely cases where disabling support for trailing strings would be useful.\n\nEven though it's a change of behaviour,I think we should change the signature to match `pydantic_core.from_json`."
+}

@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_71",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "e9cde451034f4c9359a92ec7e4bddc0bfc0af0d1",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Bug: `TypeError: cannot pickle 'staticmethod' object` with a `Field.default`\n\n### Description\n\nFor some reason, I can't use `staticmethod` with the `default` argument for a `Field`\n\n### Example Code\n\n```Python\nfrom collections.abc import Callable\n\nfrom pydantic import BaseModel, Field\n\n\nclass SomeModel(BaseModel):\n    @staticmethod\n    def default_int_factory() -> int: ...\n\n    # This is fine\n    # int_factory: Callable[[], int] = default_int_factory\n    # This blows up: TypeError: cannot pickle 'staticmethod' object\n    int_factory: Callable[[], int] = Field(default=default_int_factory)\n```\n\n\n### Python, Pydantic & OS Version\n\n```Text\npydantic version: 2.9.2\n        pydantic-core version: 2.23.4\n          pydantic-core build: profile=release pgo=false\n                 install path: /path/to/.venv/lib/python3.12/site-packages/pydantic\n               python version: 3.12.5 (main, Aug 27 2024, 12:00:37) [Clang 15.0.0 (clang-1500.3.9.4)]\n                     platform: macOS-14.5-arm64-arm-64bit\n             related packages: fastapi-0.115.0 mypy-1.11.2 typing_extensions-4.12.2\n                       commit: unknown\n```"
+}

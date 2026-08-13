@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_15",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "181991b536bf67100523516e4e1512ffa8438060",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Support `extra` for TypedDict\n\nBlocked by #5582.\n\nOriginal request from #5448"
+}

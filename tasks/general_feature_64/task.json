@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_64",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "43ed0d3f5ae2a79f217b7311588a704984e175aa",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Crash with recursive `repr`/`str`/`print`\n\n### Description\n\nin python, the std types like `list` have special casing for recursive stringification, it would be logical if pydantic followed this convention\n\n### Example Code\n\n```Python\nfrom pydantic import BaseModel\n\nl = []\nl.append(l)\nprint(l)  # [[...]]\n\n\nclass A(BaseModel):\n    a: object = None\n\n\na = A()\na.a = a\nprint(a)  # crash\n```\n\n\n### Python, Pydantic & OS Version\n\n```Text\npydantic version: 2.9.1\n        pydantic-core version: 2.23.3\n          pydantic-core build: profile=release pgo=false\n                 install path: C:\\Users\\AMONGUS\\projects\\test\\.venv\\Lib\\site-packages\\pydantic\n               python version: 3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]\n                     platform: Windows-10-10.0.19045-SP0\n             related packages: typing_extensions-4.12.2\n                       commit: unknown\n```"
+}

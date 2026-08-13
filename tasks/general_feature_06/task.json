@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_06",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "e89e17c63945a95a7bd88fe68f7f34340c7e1c6f",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Data class with defer_build set to true causes the error AttributeError: type object '...' has no attribute '__pydantic_fields__'. Did you mean: '__pydantic_config__'\n\n### Description\n\nUpgraded from 2.9.2 and the below code wll now fail unless I set **defer_build** to false\n\n### Example Code\n\n```Python\nimport typing\n\nimport pydantic\n\n\n@pydantic.dataclasses.dataclass(kw_only=True, config=pydantic.config.ConfigDict(defer_build=True))\nclass MyObject:\n    msg_id: str\n    receipt_handle: str\n\n\n@pydantic.validate_call\ndef do_work(input: MyObject|typing.Iterable[MyObject]|list[MyObject]):\n    pass\n```\n\n\n### Python, Pydantic & OS Version\n\n```Text\npython -c \"import pydantic.version; print(pydantic.version.version_info())\"\n             pydantic version: 2.10.1\n        pydantic-core version: 2.27.1\n          pydantic-core build: profile=release pgo=false\n                 install path: D:\\XXX\\XXX\\XXX\\venv\\Lib\\site-packages\\pydantic\n               python version: 3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]\n                     platform: Windows-11-10.0.22631-SP0\n             related packages: typing_extensions-4.12.2\n```"
+}

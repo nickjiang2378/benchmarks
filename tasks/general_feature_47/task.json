@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_47",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "f45033eee3d9819796cf311599617af422f49bda",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Enforce more strict annotation checks\n\nWith recent changes to the core schema, we're being slightly more lax with our annotation checks. See  for an example of a newly failing test.\n\nWe should close this before we do our next minor release.\n\nIn general, this also relates to PEP [746](https://pep-previews--3785.org.readthedocs.build/pep-0746/). We can work on enforcing that fully in the future as well."
+}

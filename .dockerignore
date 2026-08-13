@@ -1,0 +1,8 @@
+# Only pydantic-clone and setup_task.sh belong in the build context. Everything
+# below can reach hundreds of MB (worktrees, venvs, agent trajectories) and would
+# be copied into the daemon on every build.
+work
+tasks*
+answers*
+drivers
+__pycache__

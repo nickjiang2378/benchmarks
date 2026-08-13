@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_41",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "5d09b4754d4abcdfefaae554de4dae36124a683c",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Weird error message on creating a generic RootModel\n\n### Description\n\nWhen creating a generic `RootModel` without providing the generic to the model in the class inheritance `RootModelRootType` is mentioned in the error message, which is somewhat misleading.\n\nI would expect `RootModelRootType` to be stripped from suggested types and maybe if possible to mention the needed parametrization of the `RootModel` itself\n\n### Example Code\n\n```Python\nfrom typing import Generic, TypeVar\nfrom pydantic import BaseModel, RootModel\n\nT_ = TypeVar(\"T_\", bound=BaseModel)\n\n\nclass GenericRootModel(RootModel, Generic[T_]):\n    root: T_ | int\n```\n\n\n### Python, Pydantic & OS Version\n\n```Text\npydantic version: 2.6.0\n        pydantic-core version: 2.16.1\n          pydantic-core build: profile=release pgo=true\n                 install path: $HOME/pyjcsidm/.venv/lib/python3.11/site-packages/pydantic\n               python version: 3.11.6 (main, Oct  8 2023, 05:06:43) [GCC 13.2.0]\n                     platform: Linux-6.2.0-26-generic-x86_64-with-glibc2.38\n             related packages: mypy-1.8.0 email-validator-2.1.0.post1 typing_extensions-4.9.0 pydantic-settings-2.1.0\n                       commit: unknown\n```"
+}

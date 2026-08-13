@@ -1,0 +1,9 @@
+{
+ "id": "pydantic-suite-007",
+ "type": "suite",
+ "repo": "pydantic/pydantic",
+ "base_commit": "da841493831c86229ce5d5dd4dfbc482bfea3ddb",
+ "tests_commit": "0cfe85396a9aa9f96113a7c3cba1feedb518a364",
+ "instructions": "The repository at /repo is a Python library. The behavior described below is\nalready implemented in its source.\n\nYour job is to write a comprehensive pytest test suite for that behavior, in new\nfile(s) under tests/. Read the implementation to work out what is worth\nasserting, and cover the edge cases -- not just the happy path. Write your tests\nto disk as you go rather than only at the end.\n\nWork by reading only. Do not run any tests and do not execute the library:\nnavigating and reading files is fine, running code is not. Do not modify the\nlibrary source or any existing test file. Your tests must assert behavior through\nthe library's public API, never by inspecting its source text or bytecode.\n",
+ "prompt": "# AttributeError model.__pydantic_private__.__setitem__\n\n### Description\n\nIn latest version of 2.11.0, getting attribute error.\n\nFile \"/opt/venv/lib/python3.11/site-packages/pydantic/main.py\", line 105, in <lambda>\n    'private': lambda model, name, val: model.__pydantic_private__.__setitem__(name, val),  # pyright: ignore[reportOptionalMemberAccess]\n                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute '__setitem__'. Did you mean: '__setattr__'?\n\n### Python, Pydantic & OS Version\n\n```Text\npython3.11\n```"
+}

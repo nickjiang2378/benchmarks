@@ -1,0 +1,9 @@
+{
+ "id": "pydantic-suite-013",
+ "type": "suite",
+ "repo": "pydantic/pydantic",
+ "base_commit": "9ad349a78dfe13dcec77a26657eb3b522716ab5a",
+ "tests_commit": "ed8df669fd12e221649bcd75139665c9ee00bdc5",
+ "instructions": "The repository at /repo is a Python library. The behavior described below is\nalready implemented in its source.\n\nYour job is to write a comprehensive pytest test suite for that behavior, in new\nfile(s) under tests/. Read the implementation to work out what is worth\nasserting, and cover the edge cases -- not just the happy path. Write your tests\nto disk as you go rather than only at the end.\n\nWork by reading only. Do not run any tests and do not execute the library:\nnavigating and reading files is fine, running code is not. Do not modify the\nlibrary source or any existing test file. Your tests must assert behavior through\nthe library's public API, never by inspecting its source text or bytecode.\n",
+ "prompt": "# v2.9.0b1 is breaking napari\n\nSee [napari's CI](https://github.com/napari/napari/actions/runs/10567191832/job/29275631436?pr=7217), output:\n\n```\n    File \"/tmp/.tox/py312-linux-pyqt5-no_cov/lib/python3.12/site-packages/pydantic_compat/_v2/mixin.py\", line 58, in <module>\n      class PydanticCompatMixin(metaclass=_MixinMeta):\n    File \"/tmp/.tox/py312-linux-pyqt5-no_cov/lib/python3.12/site-packages/pydantic_compat/_v2/mixin.py\", line 55, in __new__\n      return super().__new__(cls, name, bases, namespace, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    File \"/tmp/.tox/py312-linux-pyqt5-no_cov/lib/python3.12/site-packages/pydantic/_internal/_model_construction.py\", line 246, in __new__\n      del namespace[instance_slot]\n          ~~~~~~~~~^^^^^^^^^^^^^^^\n  KeyError: '__pydantic_fields_set__'\n```\n\nIt looks like this was caused by #10110, here:\n\nhttps://github.com/pydantic/pydantic/blob//pydantic/_internal/_model_construction.py#L245-L246"
+}

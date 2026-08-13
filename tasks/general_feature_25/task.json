@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_25",
+ "category": "general_feature",
+ "type": "localize",
+ "repo": "pydantic/pydantic",
+ "base_commit": "fac2bfdf0d0df1d107331caf73c22955b6295f27",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Identify which Python source files must be modified to resolve the\nreported problem. Write your answer to /repo/localization.json as a JSON list\nof repo-relative file paths, e.g. [\"package/module.py\",\n\"package/_internal/helper.py\"]. Do not include test files. Scoring is F1\noverlap against the set of source files that a correct fix must touch.",
+ "prompt": "# `Field` doesn't play well with `TypeAliasType`\n\n```python\nfrom typing import Annotated\nfrom typing_extensions import TypeAliasType\n\nfrom pydantic import Field, BaseModel\n\nSomeAlias = TypeAliasType('SomeAlias', Annotated[int, Field(description='number')])\n\nclass Model(BaseModel):\n    foo: Annotated[SomeAlias, Field(title='abc')]\n\n\nprint(Model.model_json_schema())  # description gets dropped\n```"
+}

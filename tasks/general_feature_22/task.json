@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_22",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "2b15fedf4d9070991da352ea345cfff7f937f767",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# model_construct() can leave __pydantic_private__ unset when model_post_init is user-defined, causing pickle.dumps() to crash in BaseModel.__getstate__\n\n## Environment\n\n- pydantic==2.12.5\n- Python 3.13\n\n## Minimal Repro\n\n```python\nimport pickle\nfrom pydantic import BaseModel\n\nclass M(BaseModel):\n    x: int\n\n    def model_post_init(self, context):\n        # user-defined post-init that does not touch private attrs\n        pass\n\nm = M.model_construct(x=1)\nprint(hasattr(m, \"__pydantic_private__\"))  # False in this scenario\npickle.dumps(m)  # AttributeError\n```\n\n### Python, Pydantic & OS Version\n\n```Text\npydantic version: 2.12.5\n        pydantic-core version: 2.41.5\n          pydantic-core build: profile=release pgo=false\n               python version: 3.13.3 (main, Apr  9 2025, 04:04:49) [MSC v.1943 64 bit (AMD64)]\n                     platform: Windows-11-10.0.26200-SP0\n             related packages: email-validator-2.3.0 fastapi-0.128.0 pydantic-extra-types-2.11.0 pydantic-settings-2.12.0 typing_extensions-4.15.0\n                       commit: unknown\n```"
+}

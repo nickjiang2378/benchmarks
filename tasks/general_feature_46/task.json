@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_46",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "d92d34197a0d34ad0d0358e6de9b284482674a95",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# default_factory passed in annotation Field silently ignored\n\n```py\nfrom typing import Annotated\nfrom pydantic import Field\nimport pydantic.dataclasses\n\n@pydantic.dataclasses.dataclass()\nclass ExampleReproducer:\n    val2: Annotated[int, Field(default_factory=lambda: 3)]\n\nvalue = ExampleReproducer()\n```\n\n...fails:\n\n```py\nTraceback (most recent call last):\n  File \"test_pydantic.py\", line 11, in <module>\n    value = ExampleReproducer()\n            ^^^^^^^^^^^^^^^^^^^\n  File \"/nix/store/fcjbczh74z9hx7ingvb5ydsa9fv5y81q-python3-3.12.4-env/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py\", line 140, in __init__\n    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)\npydantic_core._pydantic_core.ValidationError: 1 validation error for ExampleReproducer\nval2\n  Field required [type=missing, input_value=ArgsKwargs(()), input_type=ArgsKwargs]\n    For further information visit https://errors.pydantic.dev/2.7/v/missing\n```\n\nIf these values can't be honored in this context, perhaps we should throw a warning or error?"
+}

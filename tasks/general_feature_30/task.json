@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_30",
+ "category": "general_feature",
+ "type": "localize",
+ "repo": "pydantic/pydantic",
+ "base_commit": "6800281ba87625346daf5826563740ded8a9851b",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Identify which Python source files must be modified to resolve the\nreported problem. Write your answer to /repo/localization.json as a JSON list\nof repo-relative file paths, e.g. [\"package/module.py\",\n\"package/_internal/helper.py\"]. Do not include test files. Scoring is F1\noverlap against the set of source files that a correct fix must touch.",
+ "prompt": "# `FieldInfo` not expanding parameterization\n\n```python\nfrom typing import Annotated\n\nfrom pydantic import BaseModel, Field\n\nclass Model[T](BaseModel):\n    t: T\n\nM = Model[Annotated[int, Field(gt=1)]]\n\nM.model_fields['t']\n#> FieldInfo(annotation=Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=1)])], required=True)\n```\n\nRelated: https://github.com/pydantic/pydantic/issues/11922."
+}

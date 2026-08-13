@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_33",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "d67eff2bacff301e7bbd255ce9907698352a3490",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Request for \"with_attr_docs\" feature\n\nAs mentioned in  I have been using https://github.com/danields761/pydantic-settings/ mostly for its `with_attrs_docs` decorator. (That being said, I wanted to link to its documentation here, but cannot find it…)\n\nIt greatly reduces the visual noise / clutter when documenting fields that otherwise do not even need a `Field()`.\n\nHence, I would love to see this be supported in this new project as well (not caring so much about the actual syntax / import, in case the name should change)."
+}

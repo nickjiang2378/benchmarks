@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_31",
+ "category": "general_feature",
+ "type": "localize",
+ "repo": "pydantic/pydantic",
+ "base_commit": "87e50572bacb4edf38dbfa03504742d74328bb48",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Identify which Python source files must be modified to resolve the\nreported problem. Write your answer to /repo/localization.json as a JSON list\nof repo-relative file paths, e.g. [\"package/module.py\",\n\"package/_internal/helper.py\"]. Do not include test files. Scoring is F1\noverlap against the set of source files that a correct fix must touch.",
+ "prompt": "# lazy evaluation of type annotations in python 3.14 does not work on `ClassVar`s when `extra=\"allow\"`\n\n### Description\n\ni'm attempting to remove all the `from __future__ import annotations` imports from my codebase now that it's no longer required in python 3.14, however i ran into this case where it seems to still be needed\n\n\n### Example Code\n\n```Python\nfrom typing import ClassVar\n\nfrom pydantic import BaseModel\n\n\nclass Foo(BaseModel, extra=\"allow\"):\n    asdf: ClassVar[Bar] # NameError: name 'Bar' is not defined\n\n\nclass Bar: ...\n```\n\n### Python, Pydantic & OS Version\n\n```Text\npydantic version: 2.12.0\n        pydantic-core version: 2.41.1\n          pydantic-core build: profile=release pgo=false\n               python version: 3.14.0 (main, Oct  7 2025, 15:33:28) [MSC v.1944 64 bit (AMD64)]\n                     platform: Windows-11-10.0.22631-SP0\n             related packages: typing_extensions-4.15.0\n                       commit: unknown\n```"
+}

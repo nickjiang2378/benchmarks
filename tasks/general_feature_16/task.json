@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_16",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "3328c20cc31e9e9c60f4a91acae130f314fc513d",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# `ImportString` serialization is incorrect when type has `name` attribute\n\n### Description\n\nIf the type has a `name` attribute, but is not one of the handled cases (`stdout`, etc.), `ImportString._serialize` will return `None`.\n\n### Python, Pydantic & OS Version\n\n```Text\npydantic version: 2.11.7\n        pydantic-core version: 2.33.2\n          pydantic-core build: profile=release pgo=false\n               python version: 3.12.11 (stable, redacted, redacted) [Clang 9999.0.0 ()]\n                     platform: Linux-5.10.0-smp-1107.69.0.0-x86_64-with-glibc2.27\n             related packages: \n                       commit: unknown\n```"
+}

@@ -1,0 +1,9 @@
+{
+ "id": "general_feature_57",
+ "category": "general_feature",
+ "type": "fix",
+ "repo": "pydantic/pydantic",
+ "base_commit": "1eb73033f6951b0e6c5e2441d2b0198d7bb3a36e",
+ "instructions": "The repository at /repo is a Python library. Below is a bug report filed\nagainst it. Modify the library source to resolve the reported problem. Do NOT\nmodify anything under tests/ -- changes there are ignored by scoring. Your\nchange is graded by tests that are not present in the repository: partial\ncredit for the fraction of currently-failing tests your change makes pass,\nwith a penalty if you break tests that currently pass.",
+ "prompt": "# Add a \"millisecond\" option to ser_json_timedelta config parameter\n\n### Description\n\nCurrently the ConfigDict `ser_json_timedelta` parameter can return data in ISO format or as a second timestamp; it would be very useful if there could be an option that would allow returning a millisecond timestamp instead.\n\n### Affected Components\n\n- [X] [Data serialization](https://docs.pydantic.dev/concepts/serialization/) - `.model_dump()` and `.model_dump_json()`"
+}
